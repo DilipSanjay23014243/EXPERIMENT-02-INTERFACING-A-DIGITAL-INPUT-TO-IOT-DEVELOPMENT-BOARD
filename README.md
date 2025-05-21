@@ -1,13 +1,13 @@
 # EXPERIMENT-02-INTERFACING-A-DIGITAL-INPUT-OUTPUT-TO-IOT-DEVELOPMENT-BOARD
 
 
-**DATE:**
+**DATE:** 
 
-**NAME:**
+**NAME:** DILIP SANJAY
 
-**ROLL NO:**
+**ROLL NO:** 212223240032
 
-**DEPARTMENT:**
+**DEPARTMENT:** AIML
 
 ## Aim
 
@@ -100,13 +100,43 @@ IR technology is used in a wide range of wireless applications which includes re
 
 
 ## STM 32 CUBE PROGRAM
-
 ```
-// Your STM 32 CUBE Program code here
+int main(void)
+{
+  
+  HAL_Init();
+  
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+    
+  while (1)
+  {
+	  IRPAIR();
+  }
+}
+
+void IRPAIR()
+{
+	IRSENSOR = HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+	if(IRSENSOR == 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+		HAL_Delay(2000);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(500);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+}
 ```
 
 ## OUTPUT
+![with object](https://github.com/user-attachments/assets/58395e17-6f6d-458e-afdb-a0ead25e4da8)
+![without object](https://github.com/user-attachments/assets/b88ec6a9-9cb5-4580-ab24-e3f3dc6a269c)
 
 ## Result
-
 Interfacing a digital Input (ir pair) with ARM microcontroller based IOT development is executed and the results are verified.
